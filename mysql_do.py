@@ -824,7 +824,8 @@ def active_viewer(n, start_date, end_date):
     query += f"HAVING num >= %s ) as tb1 "
     query += f"JOIN viewers as tb2 ON tb1.uid = tb2.uid "
     query += f"ORDER BY tb1.uid, num DESC; "
-    data = (start_date + " 00:00:00", end_date + " 23:59:59", n)
+    # data = (start_date + " 00:00:00", end_date + " 23:59:59", n)
+    data = (start_date, end_date, n)
     return execute_select(query, data)
 
 
