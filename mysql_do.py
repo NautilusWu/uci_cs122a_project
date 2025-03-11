@@ -594,12 +594,12 @@ def insert_movie(rid, website_url):
     #     err_info += f"Do not insert it to movies."
     #     # print(err_info)
     #     return 0, "Fail"
-    # if is_exist("movies", "rid", rid):
-    #     # The release id is in movies table, so do not insert it again
-    #     err_info = f"Release id {rid} is in movies table. "
-    #     err_info += f"Do not insert it again."
-    #     # print(err_info)
-    #     return 0, "Fail"
+    if is_exist("movies", "rid", rid):
+        # The release id is in movies table, so do not insert it again
+        err_info = f"Release id {rid} is in movies table. "
+        err_info += f"Do not insert it again."
+        # print(err_info)
+        return 0, "Fail"
 
     cursor = None
     try:
