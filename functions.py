@@ -387,29 +387,28 @@ def f_releasetitle(params):
         print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<20}  {row[3]:<17}  {ep_num:<6}  {row[5]:<8}") 
 
 def f_activeviewer(params):
-    print('; '.join(params))
-    # if len(params) < 3:
-    #     # print("Not enough parameters.")
-    #     return False
+    # print('; '.join(params))
+    if len(params) < 3:
+        print("Not enough parameters.")
+        return False
 
-    # n = params[0]
-    # start_date = params[1]
-    # end_date = params[2]
-    # if not check_id(n) or int(n) < 1:
-    #     print(f"N is not valid.")
-    #     return False        
-    # # if not check_date(start_date) or not check_date(end_date):
-    # #     print(f"Start date or end date is not valid.")
-    # #     # print(f"")
-    # #     return False
-    # rtn, result = mysql_do.active_viewer(int(n), start_date, end_date)
-    # if rtn == 0 :
-    #     # print(f"UID{' '*2}first name{' '*3}last name")
-    #     for row in result:
-    #         print(f"{row[0]:>3}  {row[1]:<11}  {row[2]}") 
-    #     return True
-    # else:
-    #     return False
+    n = params[0]
+    start_date = params[1]
+    end_date = params[2]
+    if not check_id(n) or int(n) < 1:
+        print(f"N is not valid.")
+        return False        
+    if not check_date(start_date) or not check_date(end_date):
+        print(f"Start date or end date is not valid.")
+        return False
+    rtn, result = mysql_do.active_viewer(int(n), start_date, end_date)
+    if rtn == 0 :
+        print(f"UID{' '*2}first name{' '*3}last name")
+        for row in result:
+            print(f"{row[0]:>3}  {row[1]:<11}  {row[2]}") 
+        return True
+    else:
+        return False
     return False
  
 def f_videosviewed(params):
