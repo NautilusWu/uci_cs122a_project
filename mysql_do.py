@@ -216,7 +216,7 @@ def create_new_tables():
         "quality VARCHAR(255) NOT NULL, ",
         "device VARCHAR(255) NOT NULL, ",
         "FOREIGN KEY (uid) REFERENCES viewers(uid) ON DELETE CASCADE, ",
-        "FOREIGN KEY (rid) REFERENCES releases(rid) ON DELETE CASCADE, ",
+        "FOREIGN KEY (rid) REFERENCES releases(rid) ON DELETE CASCADE",
         # "CONSTRAINT chk_init_leave CHECK (initiate_at <= leave_at)", # Making sure the logic. Haven't learn in class
     ]
     reviews_columns = [
