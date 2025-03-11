@@ -387,6 +387,7 @@ def f_releasetitle(params):
         print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<20}  {row[3]:<17}  {ep_num:<6}  {row[5]:<8}") 
 
 def f_activeviewer(params):
+    print('; '.join(params))
     # if len(params) < 3:
     #     # print("Not enough parameters.")
     #     return False
