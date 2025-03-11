@@ -403,7 +403,7 @@ def f_activeviewer(params):
     #     return False
     rtn, result = mysql_do.active_viewer(int(n), start_date, end_date)
     if rtn == 0 :
-        print(f"UID{' '*2}first name{' '*3}last name")
+        # print(f"UID{' '*2}first name{' '*3}last name")
         for row in result:
             print(f"{row[0]:>3}  {row[1]:<11}  {row[2]}") 
         return True
