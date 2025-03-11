@@ -583,11 +583,11 @@ def insert_movie(rid, website_url):
         print("Database connection failed.")
         return -1, "Fail"
 
-    if not is_exist("releases", "rid", rid):
-        err_info = f"Release id {rid} is not exists. "
-        err_info += f"Can not insert a movie with this id."
-        # print(err_info)
-        return 0, "Fail"
+    # if not is_exist("releases", "rid", rid):
+    #     err_info = f"Release id {rid} is not exists. "
+    #     err_info += f"Can not insert a movie with this id."
+    #     # print(err_info)
+    #     return 0, "Fail"
     # if is_exist("series", "rid", rid):
     #     # The release id is in series table, so do not insert it to movies
     #     err_info = f"Release id {rid} is in series table. "
