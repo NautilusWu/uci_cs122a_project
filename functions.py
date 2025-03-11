@@ -398,9 +398,9 @@ def f_activeviewer(params):
     if not check_id(n) or int(n) < 1:
         print(f"N is not valid.")
         return False        
-    if not check_date(start_date) or not check_date(end_date):
-        print(f"Start date or end date is not valid.")
-        return False
+    # if not check_date(start_date) or not check_date(end_date):
+    #     # print(f"Start date or end date is not valid.")
+    #     return False
     rtn, result = mysql_do.active_viewer(int(n), start_date, end_date)
     if rtn == 0 :
         print(f"UID{' '*2}first name{' '*3}last name")
