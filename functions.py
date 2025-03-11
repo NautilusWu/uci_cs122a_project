@@ -398,7 +398,8 @@ def f_activeviewer(params):
         print(f"N is not valid.")
         return False        
     if not check_date(start_date) or not check_date(end_date):
-        print(f"Start date or end date is not valid.")
+        # print(f"Start date or end date is not valid.")
+        # print(f"")
         return False
     rtn, result = mysql_do.active_viewer(int(n), start_date, end_date)
     if rtn == 0 :
