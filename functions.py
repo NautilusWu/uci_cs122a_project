@@ -384,7 +384,7 @@ def f_releasetitle(params):  # Still Questioning!!!!
     # print(f"rid{' '*2}release_title{' '*9}genre{' '*17}video_title{' '*8}ep_num{' '*2}length")
     for row in result:
         if row[4] is None:
-            ep_num = ""
+            ep_num = "HIHIHI"
         else:
             ep_num = row[4]
         print(f"{row[0]},{row[1]},{row[2]},{row[3]},{ep_num},{row[5]}") 
