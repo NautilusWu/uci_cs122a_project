@@ -363,7 +363,7 @@ def f_popularrelease(params):
         # print(f"The most popular {top_n} releases are: ")
         # print(f"rid{' '*2}title{' '*17}reviewCount")
         for row in result:
-            print(row)
+            print(row, end=',')
             # print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<8}")
 
         return True
