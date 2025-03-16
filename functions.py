@@ -361,9 +361,11 @@ def f_popularrelease(params):
             print(f"There is no any reviewed release.\n")
             return True
         # print(f"The most popular {top_n} releases are: ")
-        print(f"rid{' '*2}title{' '*17}reviewCount")
+        # print(f"rid{' '*2}title{' '*17}reviewCount")
         for row in result:
-            print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<8}") 
+            print(row)
+            # print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<8}")
+
         return True
     else:
         return False
