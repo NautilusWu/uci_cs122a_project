@@ -381,13 +381,13 @@ def f_releasetitle(params):
         return False
 
     rtn, result = mysql_do.release_title(int(sid))
-    print(f"rid{' '*2}release_title{' '*9}genre{' '*17}video_title{' '*8}ep_num{' '*2}length")
+    # print(f"rid{' '*2}release_title{' '*9}genre{' '*17}video_title{' '*8}ep_num{' '*2}length")
     for row in result:
         if row[4] is None:
             ep_num = ""
         else:
             ep_num = row[4]
-        print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<20}  {row[3]:<17}  {ep_num:<6}  {row[5]:<8}") 
+        print(f"{row[0]},{row[1]},{row[2]},{row[3]},{ep_num},{row[5]}") 
 
 def f_activeviewer(params):
     # print('; '.join(params))
