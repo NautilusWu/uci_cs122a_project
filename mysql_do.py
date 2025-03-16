@@ -792,7 +792,7 @@ def popular_release(top_n):
     query += f"FROM reviews GROUP BY rid) as tb2 "
     query += f"ON tb1.rid = tb2.rid "
     # query += f"ORDER BY tb2.reviewCount DESC, tb1.title "
-    query += f"ORDER BY tb2.reviewCount DESC, tb1.rid DESC "
+    query += f"ORDER BY tb2.reviewCount DESC, tb1.rid DESC "  # This modification ensures the order on question 9
     query += f"LIMIT %s; "
     # print(query)
     data = (top_n,)

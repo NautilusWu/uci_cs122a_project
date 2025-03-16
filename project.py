@@ -59,8 +59,8 @@ def main():
         case "popularrelease":
             params = cmd_line[2:]
             rtn_bool = functions.f_popularrelease(params)
-            info = "Success" if rtn_bool else "Fail"
-            print(info)
+            # info = "Success" if rtn_bool else "Fail"
+            # print(info)
         case "releasetitle":
             params = cmd_line[2:]
             functions.f_releasetitle(params)
