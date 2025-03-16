@@ -334,9 +334,9 @@ def f_listrelease(params):
 
     rtn, result = mysql_do.list_release(int(uid))
     if rtn == 0:
-        print(f"rid{' '*2}genre{' '*17}title")
+        # print(f"rid{' '*2}genre{' '*17}title")
         for row in result:
-            print(f"{row[0]:>3}  {row[1]:<20}  {row[2]:<8}") 
+            print(f"{row[0]},{row[1]},{row[2]}") 
         return True
     else:
         return False
@@ -371,7 +371,7 @@ def f_popularrelease(params):
     else:
         return False
 
-def f_releasetitle(params):
+def f_releasetitle(params):  # Still Questioning!!!!
     if len(params) < 1:
         # print("Not enough parameters.")
         return False
