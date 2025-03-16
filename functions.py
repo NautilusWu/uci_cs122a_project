@@ -423,10 +423,10 @@ def f_videosviewed(params):
     rid = params[0]
     rtn, result = mysql_do.videos_viewed(int(rid))
     if rtn >=0 :
-        print(f"RID{' '*2}ep_num{' '*2}title{' '*20}length{' '*2}COUNT")
+        # print(f"RID{' '*2}ep_num{' '*2}title{' '*20}length{' '*2}COUNT")
         for rec in result:
             count = 0 if rec[4] is None else  int(rec[4])
             ep_num = " " if rec[1] is None else  int(rec[1])
-            print(f"{int(rec[0]):>3}{' '*2}{ep_num:>4}{' '*4}{rec[2]:<20}{' '*5}{rec[3]:<5}{' '*3}{count}")
+            print(f"{int(rec[0])},{ep_num},{rec[2]},{rec[3]},{count}")
     else:
         return False
