@@ -408,7 +408,7 @@ def f_activeviewer(params):
     if rtn == 0 :
         # print(f"UID{' '*2}first name{' '*3}last name")
         for row in result:
-            print(f"{row[0]} {row[1]} {row[2]}")
+            print(f"{row[0]},{row[1]},{row[2]}")
             # print(f"{row[0]:>3}  {row[1]:<11}  {row[2]}") 
         return True
     else:
