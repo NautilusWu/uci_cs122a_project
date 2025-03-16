@@ -424,9 +424,14 @@ def f_videosviewed(params):
     rtn, result = mysql_do.videos_viewed(int(rid))
     if rtn >=0 :
         # print(f"RID{' '*2}ep_num{' '*2}title{' '*20}length{' '*2}COUNT")
+        # for rec in result:
+        #     count = 0 if rec[4] is None else  int(rec[4])
+        #     ep_num = " " if rec[1] is None else  int(rec[1])
+        #     print(f"{int(rec[0])},{ep_num},{rec[2]},{rec[3]},{count}")
+        
         for rec in result:
-            count = 0 if rec[4] is None else  int(rec[4])
-            ep_num = " " if rec[1] is None else  int(rec[1])
-            print(f"{int(rec[0])},{ep_num},{rec[2]},{rec[3]},{count}")
+            # count = 0 if rec[4] is None else  int(rec[4])
+            # ep_num = " " if rec[1] is None else  int(rec[1])
+            print(f"{(rec[0])},{rec[1]},{rec[2]},{rec[3]},{rec[4]}")
     else:
         return False
