@@ -322,24 +322,25 @@ def f_updaterelease(params):
         return False
 
 def f_listrelease(params):
-    if len(params) < 1:
-        # print("Not enough parameters.")
-        return False
+    print(params)
+    # if len(params) < 1:
+    #     # print("Not enough parameters.")
+    #     return False
 
-    uid = params[0]
+    # uid = params[0]
 
-    if not check_id(uid):
-        # print(f"User id {uid} is not valid.")
-        return False
+    # if not check_id(uid):
+    #     # print(f"User id {uid} is not valid.")
+    #     return False
 
-    rtn, result = mysql_do.list_release(int(uid))
-    if rtn == 0:
-        # print(f"rid{' '*2}genre{' '*17}title")
-        for row in result:
-            print(f"{row[0]},{row[1]},{row[2]}") 
-        return True
-    else:
-        return False
+    # rtn, result = mysql_do.list_release(int(uid))
+    # if rtn == 0:
+    #     # print(f"rid{' '*2}genre{' '*17}title")
+    #     for row in result:
+    #         print(f"{row[0]},{row[1]},{row[2]}") 
+    #     return True
+    # else:
+    #     return False
 
 def f_popularrelease(params):
     if len(params) < 1:
@@ -384,7 +385,7 @@ def f_releasetitle(params):  # Still Questioning!!!!
     # print(f"rid{' '*2}release_title{' '*9}genre{' '*17}video_title{' '*8}ep_num{' '*2}length")
     for row in result:
         if row[4] is None:
-            ep_num = "HIHIHI"
+            ep_num = ""
         else:
             ep_num = row[4]
         print(f"{row[0]},{row[1]},{row[2]},{row[3]},{ep_num},{row[5]}") 
@@ -428,10 +429,8 @@ def f_videosviewed(params):
             count = 0 if rec[4] is None else  int(rec[4])
             ep_num = " " if rec[1] is None else  int(rec[1])
             print(f"{int(rec[0])},{ep_num},{rec[2]},{rec[3]},{count}")
+
         
-        # for rec in result:
-        #     count = 0 if rec[4] is None else  int(rec[4])
-        #     # ep_num = " " if rec[1] is None else  int(rec[1])
-        #     print(f"{(rec[0])},{rec[1]},{rec[2]},{rec[3]},{count}")
+
     else:
         return False
