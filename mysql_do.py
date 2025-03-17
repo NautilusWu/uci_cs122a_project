@@ -801,8 +801,8 @@ def popular_release(top_n):
 
 
 def release_title(sid):
-    # query = f"SELECT tb1.sid, tb1.rid,tb3.title, tb3.genre, "
-    query = f"SELECT tb1.sid, tb1.rid, tb3.title, tb3.genre, tb1.ep_num, tb2.title, tb2.length "
+    query = f"SELECT tb1.sid, tb1.rid,tb3.title, tb3.genre"
+    # query = f"SELECT tb1.sid, tb1.rid, tb3.title, tb3.genre, tb1.ep_num, tb2.title, tb2.length "
     query += f"tb1.ep_num, tb2.title, tb1.ep_num, tb2.length "
     query += f"FROM sessions as tb1 JOIN videos as tb2 "
     query += f"ON tb1.rid = tb2.rid "
