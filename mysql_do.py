@@ -773,9 +773,9 @@ def execute_select(query, data=None):
 
 
 def list_release(uid):
-    if not is_exist("viewers", "uid", uid):
-        print(f"Viewer id {uid} is not exists, can not list it.")
-        return -1, None
+    # if not is_exist("viewers", "uid", uid):
+    #     print(f"Viewer id {uid} is not exists, can not list it.")
+    #     return -1, None
     query = f"SELECT rid, genre, title FROM releases "
     query += f"WHERE rid in "
     query += f"(select distinct rid from reviews where uid = %s) "
@@ -834,8 +834,8 @@ def videos_viewed(rid):
     if not is_exist("videos", "rid", rid):
         print(f"rid {rid} is not exist in table videos.")
         return -1, None
-    # query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, tb2.count_uid "
-    query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
+    query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, tb2.count_uid "
+    # query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
     query += f"FROM videos as tb1 "
     query += f"LEFT JOIN "
     query += f"(SELECT rid, COALESCE(ep_num, rid) AS new_ep_num, count(distinct uid) as count_uid "

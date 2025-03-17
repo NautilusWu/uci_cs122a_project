@@ -322,25 +322,25 @@ def f_updaterelease(params):
         return False
 
 def f_listrelease(params):
-    print(params)
-    # if len(params) < 1:
-    #     # print("Not enough parameters.")
-    #     return False
+    # print(params)
+    if len(params) < 1:
+        # print("Not enough parameters.")
+        return False
 
-    # uid = params[0]
+    uid = params[0]
 
-    # if not check_id(uid):
-    #     # print(f"User id {uid} is not valid.")
-    #     return False
+    if not check_id(uid):
+        # print(f"User id {uid} is not valid.")
+        return False
 
-    # rtn, result = mysql_do.list_release(int(uid))
-    # if rtn == 0:
-    #     # print(f"rid{' '*2}genre{' '*17}title")
-    #     for row in result:
-    #         print(f"{row[0]},{row[1]},{row[2]}") 
-    #     return True
-    # else:
-    #     return False
+    rtn, result = mysql_do.list_release(int(uid))
+    if rtn == 0:
+        # print(f"rid{' '*2}genre{' '*17}title")
+        for row in result:
+            print(f"{row[0]},{row[1]},{row[2]}") 
+        return True
+    else:
+        return False
 
 def f_popularrelease(params):
     if len(params) < 1:
