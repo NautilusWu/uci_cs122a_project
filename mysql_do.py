@@ -868,6 +868,21 @@ def active_viewer(n, start_date, end_date):
 #     return execute_select(query, data)
 
 
+# def videos_viewed(rid):
+#     if not is_exist("videos", "rid", rid):
+#         print(f"rid {rid} is not exist in table videos.")
+#         return -1, None
+
+#     query = "SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
+#     query += "FROM videos as tb1 "
+#     query += "LEFT JOIN (SELECT rid, count(distinct uid) as count_uid FROM sessions GROUP BY rid) as tb2 "
+#     query += "ON tb1.rid = tb2.rid "
+#     query += "WHERE tb1.rid = %s "
+#     query += "ORDER BY tb1.rid DESC;"
+
+#     data = (rid,)
+#     return execute_select(query, data)
+
 def videos_viewed(rid):
     if not is_exist("videos", "rid", rid):
         print(f"rid {rid} is not exist in table videos.")
