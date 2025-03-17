@@ -68,8 +68,9 @@ def main():
             params = cmd_line[2:]
             rtn_bool = functions.f_activeviewer(params)
         case "videosviewed":
-            params = cmd_line[2:]
-            rtn_bool = functions.f_videosviewed(params)
+            print(params)
+            # params = cmd_line[2:]
+            # rtn_bool = functions.f_videosviewed(params)
         case _:
             print("Unknown command: " + func_name)
             print(
