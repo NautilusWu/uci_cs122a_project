@@ -846,21 +846,39 @@ def active_viewer(n, start_date, end_date):
     return execute_select(query, data)
 
 
+# def videos_viewed(rid):
+#     if not is_exist("videos", "rid", rid):
+#         print(f"rid {rid} is not exist in table videos.")
+#         return -1, None
+#     # query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, tb2.count_uid "
+#     query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
+#     query += f"FROM videos as tb1 "
+#     query += f"LEFT JOIN "
+#     query += f"(SELECT rid, COALESCE(ep_num, rid) AS new_ep_num, count(distinct uid) as count_uid "
+#     query += f"FROM sessions "
+#     query += f"GROUP BY rid, COALESCE(ep_num, rid)) as tb2 "
+#     # query += f"ON tb1.rid = tb2.rid and COALESCE(tb1.ep_num, tb1.rid) = tb2.new_ep_num "
+#     # query += f"GROUP BY rid "
+#     query += f"ON tb1.rid = tb2.rid "
+#     query += f"WHERE tb1.rid = %s "
+#     # query += f"ORDER BY rid DESC, count_uid DESC;"
+#     query += f"ORDER BY tb1.rid DESC;"
+
+#     data = (rid,)
+#     return execute_select(query, data)
+
+
 def videos_viewed(rid):
     if not is_exist("videos", "rid", rid):
         print(f"rid {rid} is not exist in table videos.")
         return -1, None
-    # query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, tb2.count_uid "
-    query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
-    query += f"FROM videos as tb1 "
-    query += f"LEFT JOIN "
-    query += f"(SELECT rid, COALESCE(ep_num, rid) AS new_ep_num, count(distinct uid) as count_uid "
-    query += f"FROM sessions "
-    query += f"GROUP BY rid, COALESCE(ep_num, rid)) as tb2 "
-    query += f"ON tb1.rid = tb2.rid and COALESCE(tb1.ep_num, tb1.rid) = tb2.new_ep_num "
-    query += f"WHERE tb1.rid = %s "
-    # query += f"ORDER BY rid DESC, count_uid DESC;"
-    query += f"ORDER BY tb1.rid DESC;"
+
+    query = "SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
+    query += "FROM videos as tb1 "
+    query += "LEFT JOIN (SELECT rid, count(distinct uid) as count_uid FROM sessions GROUP BY rid) as tb2 "
+    query += "ON tb1.rid = tb2.rid "
+    query += "WHERE tb1.rid = %s "
+    query += "ORDER BY tb1.rid DESC;"
 
     data = (rid,)
     return execute_select(query, data)
