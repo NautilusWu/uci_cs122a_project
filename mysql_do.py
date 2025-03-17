@@ -800,20 +800,35 @@ def popular_release(top_n):
     return rtn_code, rtn_value
 
 
+# def release_title(sid):
+#     # query = f"SELECT tb1.sid, tb1.rid,tb3.title, tb3.genre, "
+#     query = f"SELECT tb1.sid, tb1.rid, tb3.title, tb3.genre, tb1.ep_num, tb2.title, tb2.length, "
+#     query += f"tb1.ep_num, tb2.title, tb1.ep_num, tb2.length "
+#     query += f"FROM sessions as tb1 JOIN videos as tb2 "
+#     query += f"ON tb1.rid = tb2.rid "
+#     query += f"AND COALESCE(tb1.ep_num, tb1.rid) = COALESCE(tb2.ep_num, tb2.rid) "
+#     query += f"JOIN releases as tb3 "
+#     query += f"ON tb1.rid = tb3.rid "
+#     query += f"WHERE tb1.sid = %s "
+#     query += f"ORDER BY tb3.title; "
+#     data = (sid,)
+#     rtn_code, rtn_value = execute_select(query, data)
+#     return rtn_code, rtn_value
+
 def release_title(sid):
-    # query = f"SELECT tb1.sid, tb1.rid,tb3.title, tb3.genre, "
-    query = f"SELECT tb1.sid, tb1.rid, tb3.title, tb3.genre, tb1.ep_num, tb2.title, tb2.length, "
-    query += f"tb1.ep_num, tb2.title, tb1.ep_num, tb2.length "
-    query += f"FROM sessions as tb1 JOIN videos as tb2 "
+    # Modified SELECT clause: Removed tb1.sid and renamed columns for clarity
+    query = f"SELECT tb1.rid, tb3.title AS release_title, tb3.genre, tb2.title AS video_title, tb1.ep_num, tb2.length "
+    query += f"FROM sessions AS tb1 JOIN videos AS tb2 "
     query += f"ON tb1.rid = tb2.rid "
     query += f"AND COALESCE(tb1.ep_num, tb1.rid) = COALESCE(tb2.ep_num, tb2.rid) "
-    query += f"JOIN releases as tb3 "
+    query += f"JOIN releases AS tb3 "
     query += f"ON tb1.rid = tb3.rid "
     query += f"WHERE tb1.sid = %s "
-    query += f"ORDER BY tb3.title; "
+    query += f"ORDER BY tb3.title; "  # Ordering in ascending order on release title
     data = (sid,)
     rtn_code, rtn_value = execute_select(query, data)
     return rtn_code, rtn_value
+
 
 
 def active_viewer(n, start_date, end_date):
