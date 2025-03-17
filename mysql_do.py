@@ -880,7 +880,7 @@ def videos_viewed(rid):
     query += f"GROUP BY rid) as tb2 "
     query += f"ON tb1.rid = tb2.rid "
     query += f"WHERE tb1.rid = %s "
-    query += f"ORDER BY tb1.rid DESC;"
+    query += f"ORDER BY tb1.rid DESC, tb1.ep_num ASC;"
     data = (rid,)
     return execute_select(query, data)
 
