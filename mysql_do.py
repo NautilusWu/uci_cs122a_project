@@ -872,21 +872,15 @@ def videos_viewed(rid):
     if not is_exist("videos", "rid", rid):
         print(f"rid {rid} is not exist in table videos.")
         return -1, None
-    query = (
-        "SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
-        "FROM videos as tb1 "
-        "LEFT JOIN ("
-        "    SELECT rid, COUNT(DISTINCT uid) as count_uid "
-        "    FROM sessions "
-        "    GROUP BY rid"
-        ") as tb2 "
-        "ON tb1.rid = tb2.rid "
-        "WHERE tb1.rid = %s "
-        "ORDER BY tb1.rid DESC;"
-    )
+    query = f"SELECT tb1.rid, tb1.ep_num, tb1.title, tb1.length, COALESCE(tb2.count_uid, 0) AS count_uid "
+    query += f"FROM videos as tb1 "
+    query += f"LEFT JOIN "
+    query += f"(SELECT rid, COUNT(DISTINCT uid) as count_uid "
+    query += f"FROM sessions "
+    query += f"GROUP BY rid) as tb2 "
+    query += f"ON tb1.rid = tb2.rid "
+    query += f"WHERE tb1.rid = %s "
+    query += f"ORDER BY tb1.rid DESC;"
     data = (rid,)
     return execute_select(query, data)
-
-
-
 
