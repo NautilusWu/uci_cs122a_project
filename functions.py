@@ -429,5 +429,6 @@ def f_videosviewed(params):
             # count = 0 if rec[4] is None else  int(rec[4])
             ep_num = " " if rec[1] is None else  int(rec[1])
             print(f"{(rec[0])},{ep_num},{rec[2]},{rec[3]},{rec[4]}")
+            # print(f"{(rec[0])},{rec[1]},{rec[2]},{rec[3]},{rec[4]}")
     else:
         return False
